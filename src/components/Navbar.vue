@@ -1,7 +1,7 @@
 <template>
     <div>
-    <v-toolbar flat dense app dark>
-    <v-app-bar-nav-icon class="green" @click="toggleDrawer"></v-app-bar-nav-icon>
+    <v-app-bar text dense app dark>
+    <v-app-bar-nav-icon offset class="green" @click="toggleDrawer"></v-app-bar-nav-icon>
       <v-toolbar-title floating>
           <span class="grey--text">To</span>
           <span class="green--text">Do</span>
@@ -13,25 +13,38 @@
       <v-btn class="orange">
           <span>Log out</span>
       </v-btn>
-    </v-toolbar>
+    </v-app-bar>
     <v-navigation-drawer
       v-model="drawer"
       bottom
       dark
       app
     >
+    <v-layout column align-center class="ma-2">
+        <v-flex class="mt-5">
+            <v-avatar size="100">
+                <img src="https://picsum.photos/200/300" alt="sample">
+            </v-avatar>
+            <p class="white--text subheading">
+                Your name
+            </p>
+        </v-flex>
+        <v-flex class="my-4 ">
+            <Popup />
+        </v-flex> 
+    </v-layout>
       <v-list
         nav
         dense
-        class="list-item"
+        class="ma-3"
       >
             <v-list-item v-for="link in links" :key="link.text" link router :to="link.route">
-                <v-list-title-action>
+                <v-list-item-action>
                     <v-icon left class="green--text">{{link.icon}}</v-icon>
-                </v-list-title-action>
-                <v-list-title-content>
-                    <v-list-tile-title class="green--text">{{link.text}}</v-list-tile-title>
-                </v-list-title-content>
+                </v-list-item-action>
+                <v-list-item-content>
+                    <v-list-item-title class="green--text">{{link.text}}</v-list-item-title>
+                </v-list-item-content>
             </v-list-item>
      
       </v-list>
@@ -40,7 +53,13 @@
 </template>
 
 <script>
+
+import Popup from "./Popup.vue" 
+
 export default {
+    components:{
+        Popup
+    },
     data(){
         return{
             drawer: false,
@@ -73,7 +92,4 @@ export default {
 </script>
 
 <style scoped>
-.list-item{
-    margin: 4rem 2rem;
-}
 </style>

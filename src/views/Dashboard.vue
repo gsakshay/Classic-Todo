@@ -4,11 +4,11 @@
   <v-container class="my-5">
 
     <v-layout row justify-center class="mb-3">
-      <v-btn small flat color="green" class="mx-3" @click="sortBy('title')">
+      <v-btn small text color="green" class="mx-3" @click="sortBy('title')">
         <v-icon left small>mdi-semantic-web</v-icon>
         <span class="caption text-lowercase">By project name</span>
       </v-btn>
-      <v-btn small flat color="green" class="mx-3" @click="sortBy('person')">
+      <v-btn small text color="green" class="mx-3" @click="sortBy('person')">
         <v-icon left small>mdi-account</v-icon>
         <span class="caption text-lowercase">By Person</span>
       </v-btn>
@@ -49,6 +49,7 @@
 
 <script lang="ts">
   import Vue from 'vue'
+  import Popup from '../components/Popup.vue'
 
   export default Vue.extend({
     name: 'Dashboard',
@@ -65,9 +66,9 @@
       }
     },
     methods: {
-      sortBy(prop){
+      sortBy(prop: string){
         console.log("I am here")
-        this.projects.sort((a, b)=>a[prop] > b[prop] ? 1: -1);
+        this.projects.sort((a:any, b:any)=>a[prop] > b[prop] ? 1: -1);
       },
      
     }
