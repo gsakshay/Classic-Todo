@@ -67,7 +67,7 @@
                     <v-btn
                         text
                         color="primary"
-                        @click="$refs?.menu?.save(due)"
+                        @click="saveDate(due)"
                     >
                         OK
                     </v-btn>
@@ -84,7 +84,7 @@
           <v-btn
             color="primary"
             text
-            @click="submitProject"
+            @click="addProject"
           >
             Add
           </v-btn>
@@ -96,7 +96,8 @@
 
 <script lang="ts">
 import Vue from 'vue'
-import format from 'date-fns/format'
+import {mapActions} from 'vuex';
+
 export default Vue.extend({
     data () {
       return {
@@ -108,15 +109,32 @@ export default Vue.extend({
       }
     },
     methods: {
-        submitProject(){
-            this.dialog = false;
-            console.log(this.title, this.content, this.due)
+        ...mapActions([
+            'addNewProject'
+        ]),
+        saveDate(due: any){
+          this.due = due;
+        },
+        addProject(){
+          this.menu = false;
+          this.dialog = false;
+          this.$store.commit("todo/ADD_PROJECT", {
+            title: this.title,
+            content: this.content,
+            due: this.due,
+            person: 'Akshay',
+            status: 'ongoing'
+          })
         }
-    },
-    computed: {
-        formattedDate(){
-            return this.due ? format(this.due, 'Do MMM YYY') : ''
-        }
+        // addNewProject(){
+        //   console.log({
+        //     title: this.title,
+        //     content: this.content,
+        //     due: this.due,
+        //     person: 'Akshay',
+        //     status: 'ongoing'
+        //   })
+        // }
     }
 })
 </script>

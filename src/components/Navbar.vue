@@ -1,7 +1,7 @@
 <template>
     <div>
     <v-app-bar text dense app dark>
-    <v-app-bar-nav-icon offset class="green" @click="toggleDrawer"></v-app-bar-nav-icon>
+    <v-app-bar-nav-icon offset class="green" @click="drawer = !drawer"></v-app-bar-nav-icon>
       <v-toolbar-title floating>
           <span class="grey--text">To</span>
           <span class="green--text">Do</span>
@@ -25,8 +25,8 @@
             <v-avatar size="100">
                 <img src="https://picsum.photos/200/300" alt="sample">
             </v-avatar>
-            <p class="white--text subheading">
-                Your name
+            <p class="white--text subheading text-center">
+                Akshay GS
             </p>
         </v-flex>
         <v-flex class="my-4 ">
@@ -46,6 +46,19 @@
                     <v-list-item-title class="green--text">{{link.text}}</v-list-item-title>
                 </v-list-item-content>
             </v-list-item>
+
+            <!-- <div>
+                {{links}}
+            </div> -->
+
+            <!-- <v-list-item>
+                <v-list-item-action>
+                    <v-icon left class="green--text">mdi-calendar</v-icon>
+                </v-list-item-action>
+                <v-list-item-content>
+                    <v-list-item-title class="green--text">Some text</v-list-item-title>
+                </v-list-item-content>
+            </v-list-item> -->
      
       </v-list>
     </v-navigation-drawer>
@@ -63,32 +76,15 @@ export default {
     data(){
         return{
             drawer: false,
-            links:[
-                {
-                    icon: 'mdi-view-dashboard',
-                    text: 'Dashboard',
-                    route: '/'
-                },
-                {
-                    icon: 'mdi-semantic-web',
-                    text: 'My projects',
-                    route: '/projects'
-                },
-                {
-                    icon: 'mdi-account-group',
-                    text: 'Team',
-                    route: '/team'
-                }
-            ]
         }
     },
-    methods: {
-        toggleDrawer(){
-            this.drawer = !this.drawer
-        },
+    computed: {
+        links() {
+            return this.$store.state.todo.links
+        }
     },
-    
 }
+
 </script>
 
 <style scoped>
