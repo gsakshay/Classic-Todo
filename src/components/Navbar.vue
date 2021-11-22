@@ -65,9 +65,10 @@
  </div>
 </template>
 
-<script>
+<script lang="ts">
 
 import Popup from "./Popup.vue" 
+import {Link} from "@/store/types"
 
 export default {
     components:{
@@ -79,7 +80,7 @@ export default {
         }
     },
     computed: {
-        links() {
+        links(): Link[] {
             return this.$store.state.todo.links
         }
     },

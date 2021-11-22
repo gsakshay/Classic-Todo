@@ -43,42 +43,13 @@
         </v-flex>
       </v-layout>
     </v-card>
-
-    <!-- <v-card class="pa-4 my-2">
-      <v-layout row wrap justify-space-around :class="`pa-2 project`">
-        <v-flex xs12 md6>
-          <div class="caption green--text">
-            Project title
-          </div>
-          <div>Project title</div>
-        </v-flex>
-        <v-flex xs6 sm4 md2>
-          <div class="caption green--text">
-            Person
-          </div>
-          <div>Team member</div>
-        </v-flex>
-        <v-flex xs6 sm4 md2>
-          <div class="caption green--text">
-            Due date
-          </div>
-          <div>
-            11/10/2025
-          </div>
-        </v-flex>
-        <v-flex xs6 sm4 md2>
-          <div class="right">
-            <v-chip small :class="` white--text caption my-2`">Ongoing</v-chip>
-          </div>
-        </v-flex>
-      </v-layout>
-    </v-card> -->
   </v-container>
 </div>
 </template>
 
 <script lang="ts">
   import Vue from 'vue'
+  import {Project} from '@/store/types'
 
   export default Vue.extend({
     name: 'Dashboard',
@@ -89,12 +60,12 @@
       }
     },
     computed: {
-      projects(){
+      projects(): Project[]{
         return this.$store.state.todo.projects;
       }
     },
     methods: {
-      sortBy(prop: string){
+      sortBy(prop: string): void{
         this.projects.sort((a:any, b:any)=>a[prop] > b[prop] ? 1: -1);
       },
      

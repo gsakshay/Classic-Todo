@@ -16,27 +16,13 @@
       </v-expansion-panel-content>
     </v-expansion-panel>
   </v-expansion-panels>
-
-  <!-- <v-expansion-panels >
-    <v-expansion-panel>
-      <v-expansion-panel-header>
-        <p class="text-uppercase">Project title</p>
-      </v-expansion-panel-header>
-      <v-expansion-panel-content class="px-4 green--text">
-        <div class="font-weight-bold orange--text">
-          11/10/2025
-        </div>
-        Information
-      </v-expansion-panel-content>
-    </v-expansion-panel>
-  </v-expansion-panels> -->
-
   </v-container>
 </div>
 </template>
 
 <script lang="ts">
 import Vue from 'vue'
+import {Project} from "@/store/types"
 
 export default Vue.extend({
   data(){
@@ -44,7 +30,7 @@ export default Vue.extend({
     }
   },
   computed: {
-    myProjects(){
+    myProjects(): Project[]{
       console.log(this.$store.getters["todo/myProjects"])
       return this.$store.getters["todo/myProjects"]
     }

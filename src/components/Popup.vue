@@ -126,15 +126,6 @@ export default Vue.extend({
             status: 'ongoing'
           })
         }
-        // addNewProject(){
-        //   console.log({
-        //     title: this.title,
-        //     content: this.content,
-        //     due: this.due,
-        //     person: 'Akshay',
-        //     status: 'ongoing'
-        //   })
-        // }
     }
 })
 </script>
